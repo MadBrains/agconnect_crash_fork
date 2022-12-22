@@ -102,11 +102,8 @@ public class AGConnectCrashPlugin implements FlutterPlugin, MethodCallHandler {
             boolean isFatal = Boolean.valueOf(arguments.get("fatal").toString());
             FlutterError exception = new FlutterError(reason);
             exception.setStackTrace(generateStackTrace(message));
-            if (isFatal) {
-                AGConnectCrash.getInstance().recordFatalException(exception);
-            } else {
-                AGConnectCrash.getInstance().recordException(exception);
-            }
+            //recordFatalException is not exist
+            AGConnectCrash.getInstance().recordException(exception);
             result.success(null);
         } else {
             result.notImplemented();
